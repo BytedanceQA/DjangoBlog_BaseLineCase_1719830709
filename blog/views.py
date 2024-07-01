@@ -162,9 +162,8 @@ class CategoryDetailView(ArticleListView):
     分类目录列表
     '''
     page_type = "分类目录归档"
-
     def get_queryset_data(self):
-        slug = self.kwargs['category_name']
+        slug= self.kwargs['category_name']
         category = get_object_or_404(Category, slug=slug)
 
         categoryname = category.name

@@ -191,21 +191,7 @@ class Category(BaseModel):
     def __str__(self):
         return self.name
 
-    @cache_decorator(60 * 60 * 10)
-    def get_category_tree(self):
-        """
-        递归获得分类目录的父级
-        :return:
-        """
-        categorys = []
 
-        def parse(category):
-            categorys.append(category)
-            if category.parent_category:
-                parse(category.parent_category)
-
-        parse(self)
-        return categorys
 
     @cache_decorator(60 * 60 * 10)
     def get_sub_categorys(self):
